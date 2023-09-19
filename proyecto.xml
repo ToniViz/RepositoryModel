@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    XML document validated by XML Schema Proyecto.xsd
+    This document models a project repository. It has a project name, author, features, version, category, license and associated files.
+    Each element has subelements that describe it.  
+-->
+
+
+<proyecto
+    xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+    xsi:noNamespaceSchemaLocation='Proyecto.xsd'>
+    <nombre id="Project">
+        <identificador>Prototipo</identificador>
+        <descripcion>Descripcion del proyecto</descripcion>
+    </nombre>
+    <autor>
+        <identificador>Jorge</identificador>
+        <fecha>2012-10-23</fecha>
+        <idproyectos>10 25 13</idproyectos>
+    </autor>
+    <caracteristicas>
+        <descripcion>Eficiente</descripcion>
+        <descripcion>Rapido</descripcion>
+        <descripcion>Seguro</descripcion>
+    </caracteristicas>
+    <version>
+        <idversion>01</idversion>
+        <url>http://www.angeles.com</url>
+        <fecha>2020-07-24</fecha>
+    </version>
+    <version>
+        <idversion>02</idversion>
+        <url>http://www.jupiter.es</url>
+        <fecha>2021-09-21</fecha>
+    </version>
+    <categoria>
+        <palabras>POO</palabras>
+        <palabras>Java</palabras>
+        <palabras>PHP</palabras>
+    </categoria>
+    <licencia tipolicencia="eCos_License">
+        <descripcion>Licencia valida para el tipo especificado</descripcion>
+    </licencia>
+    <ficheros>
+        <url>http://www.locos.com</url>
+        <url>http://www.archivodos.com</url>
+    </ficheros>
+    <descargas>1024</descargas>
+
+</proyecto>

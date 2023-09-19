@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    
+    <!-- Simple elements definitions -->
+    <xs:element name="descripcion" type="xs:token"/>
+    <xs:element name="identificador" type="xs:string"/>
+    <xs:element name="idversion" type="xs:float"/>
+    <xs:element name="fecha" type="xs:date"/>
+    <xs:element name="url" type="uri"/>
+    <xs:element name="nombreautor" type="xs:string"/>
+    <xs:element name="descargas" type="xs:long"/>
+      
+    <!-- Attribute definition -->
+    
+    <xs:attribute name="id" type="xs:ID"/>
+        
+    <!-- Data types definitions -->
+    
+    <xs:simpleType name="uri">
+        <xs:restriction base="xs:anyURI">
+            <xs:pattern value="http://www.*"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="tipo">
+        <xs:restriction base="xs:normalizedString">
+            <xs:enumeration value="eCos_License"/>
+            <xs:enumeration value="Eclipse_Public_License"/>
+            <xs:enumeration value="Common_Public_License"/>
+            <xs:enumeration value="OpenSSL_License"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="idproyecto">
+        <xs:list itemType="xs:positiveInteger"/>
+    </xs:simpleType>
+       
+    <!-- Complex elements definitions -->
+       
+    <xs:element name="nombre">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="identificador"/>
+                <xs:element ref="descripcion"/>
+            </xs:sequence>
+            <xs:attribute ref="id" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="autor">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="identificador"/>
+                <xs:element ref="fecha"/>
+                <xs:element name="idproyectos" type="idproyecto"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="caracteristicas">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="descripcion" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+     <xs:element name="version">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="idversion"/>
+                <xs:element ref="url"/>
+                <xs:element ref="fecha"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="categoria">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="palabras" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="licencia">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="descripcion"/>
+            </xs:sequence>
+            <xs:attribute name="tipolicencia" type="tipo" use="required"/>
+     </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="ficheros">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="url" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+      
+        
+    <!-- Document definition -->
+    
+    <xs:element name="proyecto">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="nombre"/>
+                <xs:element ref="autor"/>
+                <xs:element ref="caracteristicas"/>
+                <xs:element ref="version" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element ref="categoria"/>
+                <xs:element ref="licencia"/>
+                <xs:element ref="ficheros"/>
+                <xs:element name="descargas" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    
+
+</xs:schema>
